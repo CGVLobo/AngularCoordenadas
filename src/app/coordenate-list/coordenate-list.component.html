@@ -1,0 +1,31 @@
+{{dataSource.length}} Registros
+<mat-toolbar *ngIf="dataSource.length>0">
+    <span>Registros de coordenadas</span><button mat-button-raised (click)="generateExcel()">Generate Execel</button>
+</mat-toolbar>
+<table *ngIf="dataSource.length>0" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id</th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="registerDate">
+        <th mat-header-cell *matHeaderCellDef> Register Date</th>{{dataSource.length}}
+        <td mat-cell *matCellDef="let element"> {{element.registerDate}} </td>
+    </ng-container>
+    <ng-container matColumnDef="lat">
+        <th mat-header-cell *matHeaderCellDef> Lat</th>
+        <td mat-cell *matCellDef="let element"> {{element.lat}} </td>
+    </ng-container>
+    <ng-container matColumnDef="lng">
+        <th mat-header-cell *matHeaderCellDef> Lng</th>
+        <td mat-cell *matCellDef="let element"> {{element.lng}} </td>
+    </ng-container>
+    <ng-container matColumnDef="ipAddress">
+        <th mat-header-cell *matHeaderCellDef>IP</th>
+        <td mat-cell *matCellDef="let element"> {{element.ipAddress}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-toolbar *ngIf="dataSource.length==0">
+    <span>No hay registros que mostrar</span>
+</mat-toolbar>
